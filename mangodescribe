@@ -1,0 +1,146 @@
+root@ubuntu2:~# kubectl describe pod mongodb-0 -n csoc-mon-akto
+
+Name:             mongodb-0
+
+Namespace:        csoc-mon-akto
+
+Priority:         0
+
+Service Account:  default
+
+Node:             worker13-ckp-dev-nvan.dev-globalrelay.net/10.178.104.13
+
+Start Time:       Sun, 28 Apr 2024 19:20:48 +0100
+
+Labels:           controller-revision-hash=mongodb-675fc974cd
+
+                  k8s-app=mock-mongo
+
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+
+                  tenant-id=csoc_akto_test
+
+Annotations:      kubernetes.io/limit-ranger: LimitRanger plugin set: cpu, memory request for container mongo; cpu, memory limit for container mongo
+
+Status:           Running
+
+IP:               10.185.1.83
+
+IPs:
+
+  IP:           10.185.1.83
+
+Controlled By:  StatefulSet/mongodb
+
+Containers:
+
+  mongo:
+
+    Container ID:   cri-o://52b3118e358aea33964d81483e33feb81cf1851b76f60baf570a7d194ad2579f
+
+    Image:          docker-hub.artifactory.globalrelay.net/bitnami/mongodb:latest
+
+    Image ID:       docker-hub.artifactory.globalrelay.net/bitnami/mongodb@sha256:a8a8a1918324309e5b393f85b9210a28c7036fc399ec02b02424568bb997045a
+
+    Port:           27017/TCP
+
+    Host Port:      0/TCP
+
+    State:          Running
+
+      Started:      Mon, 29 Apr 2024 17:05:31 +0100
+
+    Last State:     Terminated
+
+      Reason:       Error
+
+      Exit Code:    137
+
+      Started:      Sun, 28 Apr 2024 19:20:57 +0100
+
+      Finished:     Mon, 29 Apr 2024 17:05:30 +0100
+
+    Ready:          True
+
+    Restart Count:  1
+
+    Limits:
+
+      cpu:     200m
+
+      memory:  512Mi
+
+    Requests:
+
+      cpu:     25m
+
+      memory:  256Mi
+
+    Environment:
+
+      MONGODB_EXTRA_USERNAMES:    apiscan
+
+      MONGODB_EXTRA_DATABASES:    devapiscan
+
+      MONGODB_EXTRA_PASSWORDS:    password
+
+      MONGODB_ROOT_USER:          root
+
+      MONGODB_ROOT_PASSWORD:      password
+
+      KUBERNETES_CLUSTER_DOMAIN:  cluster.local
+
+    Mounts:
+
+      /data/db:rw from data-vol (rw)
+
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-lp6n8 (ro)
+
+Conditions:
+
+  Type              Status
+
+  Initialized       True 
+
+  Ready             True 
+
+  ContainersReady   True 
+
+  PodScheduled      True 
+
+Volumes:
+
+  data-vol:
+
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+
+    ClaimName:  mock-mongo-pvc
+
+    ReadOnly:   false
+
+  kube-api-access-lp6n8:
+
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+
+    TokenExpirationSeconds:  3607
+
+    ConfigMapName:           kube-root-ca.crt
+
+    ConfigMapOptional:       <nil>
+
+    DownwardAPI:             true
+
+QoS Class:                   Burstable
+
+Node-Selectors:              <none>
+
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+Events:                      <none>
+
+root@ubuntu2:~# 
+
+
+
