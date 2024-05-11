@@ -1,0 +1,7 @@
+{{ .Chart.Name }} was installed.
+The values were loaded for the following environment: {{ "No environment was provided"  }}
+The release is named {{ .Release.Name }}.
+
+To learn more about the release, try:
+    $ helm status {{ .Release.Name }}
+    $ helm get all {{ .Release.Name }}

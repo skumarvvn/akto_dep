@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    k8s-app: mock-mongo
+  name: mongodb
+  namespace: {{ .Release.Namespace }}
+spec:
+  ports:
+    - port: 27017
+      targetPort: 27017
+  selector:
+    k8s-app: mock-mongo
+  type: ClusterIP

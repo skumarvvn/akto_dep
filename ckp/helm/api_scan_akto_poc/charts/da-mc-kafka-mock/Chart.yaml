@@ -1,0 +1,13 @@
+apiVersion: v2
+name: da-mc-kafka-mock
+description: A Helm chart describing the kafka mock Service application for Kubernetes
+
+type: application
+
+# The Chart Version, the version is managed by the CKP Pipeline which will
+# replace __REPLACEAPPVERSION__ with the version used by the pipeline
+version: 1.0.0
+
+# The Application Version, the version is managed by the CKP Pipeline which will
+# replace __REPLACEAPPVERSION__ with the version used by the pipeline
+appVersion: 1.0.0

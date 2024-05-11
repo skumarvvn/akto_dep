@@ -1,0 +1,23 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+global:
+  environment: "dev"
+  kafkaPort: 9091
+
+#####
+# Settings
+###
+podReplicasNumber: 1
+imageRepository: "docker-dev.artifactory.globalrelay.net/da-mc"
+
+#####
+# CKP
+###
+ckpHostname: "apps.ckp-dev-nvan.dev-globalrelay.net"
+
+# Container resource limits and requests are defined per environment
+cpuReq: "128m"
+cpuLim: "256m"
+memReq: "256Mi"
+memLim: "512Mi"

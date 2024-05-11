@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongodb
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: mock-mongo
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        k8s-app: mock-mongo
+    spec:
+      resources:
+        limits:
+          cpu: 550m
+          memory: 2Gi
+        requests:
+          cpu: 100m
+          memory: 256Mi
+      volumes:
+        - name: data-vol
+          persistentVolumeClaim:
+            claimName: mock-mongo-pvc
+      containers:
+        - name: mongo
+          image: docker-hub.artifactory.globalrelay.net/bitnami/mongodb:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 27017
+              protocol: TCP
+          env:
+            {{- $customUsers := include "mongodb.customUsers" . -}}
+            {{- $customDatabases := include "mongodb.customDatabases" . -}}
+            {{- if not (empty $customUsers) }}
+            - name: MONGODB_EXTRA_USERNAMES
+              value: {{ $customUsers | quote }}
+            {{- end }}
+            {{- if not (empty $customDatabases) }}
+            - name: MONGODB_EXTRA_DATABASES
+              value: {{ $customDatabases | quote }}
+            {{- end }}
+            {{- if .Values.auth.enabled }}
+            {{- if and (not (empty $customUsers)) (not (empty $customDatabases)) }}
+            - name: MONGODB_EXTRA_PASSWORDS
+              value: {{ .Values.auth.password | quote }}
+            {{- end }}
+            - name: MONGODB_ROOT_USER
+              value: {{ .Values.auth.rootUser | quote }}
+            - name: MONGODB_ROOT_PASSWORD
+              value: {{ .Values.auth.rootPassword | quote }}
+            {{- end }}
+            - name: KUBERNETES_CLUSTER_DOMAIN
+              value: {{ quote .Values.kubernetesClusterDomain }}
+          volumeMounts:
+            - name: data-vol
+              mountPath: /data/db:rw

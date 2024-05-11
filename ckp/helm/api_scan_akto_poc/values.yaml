@@ -1,0 +1,143 @@
+---
+global:
+  app:
+    name: "csoc-api-akto"
+  environment: ~
+  datacentre: "nvan"
+  deploymentSuffix: ~
+  kafkaPort: 9091
+
+#####
+# Settings
+###
+namespace: "csoc-api-akto"
+
+mongo:
+  aktoMongoConn: "mongodb://root:password@mongodb.csoc-mon-akto.svc.cluster.local:27017/devapiscan?authSource=admin"
+
+dashboard:
+  aktoApiSecurityDashboard:
+    env:
+      aktoAccountName: Helios
+      aktoConfigName: staging
+      aktoInstanceType: DASHBOARD
+      aktoKafkaBrokerMal: localhost:29092
+      aktoKafkaBrokerUrl: 127.0.0.1:29092
+      aktoKafkaGroupIdConfig: asdf
+      aktoKafkaMaxPollRecordsConfig: "100"
+      aktoKafkaTopicName: akto.api.logs
+      aktoTrafficBatchSize: "100"
+      aktoTrafficBatchTimeSecs: "10"
+      puppeteerReplayServiceUrl: http://localhost:3000
+      enabled: true
+    image:
+      repository: docker-hub.net/aktosecurity/akto-api-security-dashboard
+      tag: 1.37.18_local
+    imagePullPolicy: IfNotPresent
+    resources:
+      requests:
+        cpu: 100m
+        memory: "512Mi"
+      limits:
+        cpu: 667m
+        memory: "2Gi"
+  aktoApiSecurityPuppeteerReplay:
+    image:
+      repository: docker-hub.net/aktosecurity/akto-puppeteer-replay
+      tag: latest
+    imagePullPolicy: IfNotPresent
+    resources:
+      requests:
+        cpu: 100m
+        memory: "128Mi"
+      limits:
+        cpu: 667m
+        memory: "683Mi"
+  ports:
+  - port: 8080
+    targetPort: 8080
+  replicas: 1
+  type: LoadBalancer
+kubernetesClusterDomain: cluster.local
+
+testing:
+  aktoApiSecurityTesting:
+    env:
+      aktoAccountName: Helios
+      aktoConfigName: staging
+      aktoInstanceType: DASHBOARD
+      aktoKafkaBrokerMal: localhost:29092
+      aktoKafkaBrokerUrl: kafka1:19092
+      aktoKafkaGroupIdConfig: asdf
+      aktoKafkaMaxPollRecordsConfig: "100"
+      aktoKafkaTopicName: akto.api.logs
+      aktoTrafficBatchSize: "100"
+      aktoTrafficBatchTimeSecs: "10"
+      puppeteerReplayServiceUrl: http://localhost:3000
+      enabled: true
+    image:
+      repository: docker-hub.net/aktosecurity/akto-api-testing
+      tag: 1.37.18_local
+    resources:
+      requests:
+        cpu: 100m
+        memory: "265Mi"
+      limits:
+        cpu: 667m
+        memory: "2Gi"
+  aktoApiSecurityPuppeteerReplay:
+    image:
+      repository: docker-hub.net/aktosecurity/akto-puppeteer-replay
+      tag: latest
+    imagePullPolicy: IfNotPresent
+    resources:
+      requests:
+        cpu: 100m
+        memory: "128Mi"
+      limits:
+        cpu: 667m
+        memory: "683Mi"
+  replicas: 1
+
+
+juiceshop:
+  env:
+    enabled: true
+  # -- Specifies how many JuiceShop instances MultiJuicer should start at max. Set to -1 to remove the max Juice Shop instance cap
+  maxInstances: 1
+  image:
+    repository: docker-hub.net/bkimminich/juice-shop
+    tag: latest
+  imagePullPolicy: IfNotPresent
+  resources:
+    requests:
+      cpu: 100m
+      memory: "128Mi"
+    limits:
+      cpu: 665m
+      memory: "665Mi"
+  ports:
+    - port: 3000
+      targetPort: 3000
+  replicas: 1
+  type: LoadBalancer
+
+logging:
+  aktoApiSecurityMirrorApiLogging:
+    env:
+      aktoInfraMirroringMode: gcp
+      aktoKafkaBrokerMal: csoc-api-da-mc-kafka-mock-runtime.csoc-mon-akto.svc.cluster.local:9092
+      aktoMongoConn: mongodb://root:password@mongodb.csoc-mon-akto.svc.cluster.local:27017/devapiscan?authSource=admin
+      aktoTrafficBatchSize: "100"
+      aktoTrafficBatchTimeSecs: "10"
+    image:
+      repository: docker-hub.net/aktosecurity/mirror-api-logging:k8s_agent
+    imagePullPolicy: IfNotPresent
+    resources:
+      requests:
+        cpu: 100m
+        memory: "128Mi"
+      limits:
+        cpu: 665m
+        memory: "668Mi"
+    restart: always

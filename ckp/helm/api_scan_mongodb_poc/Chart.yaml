@@ -1,0 +1,10 @@
+apiVersion: v2
+name: mongodb
+description: A Helm chart describing the KMS Mock
+
+type: application
+
+# Match the version to the docker image tag
+version: 1.0.9
+
+appVersion: 1.0.9

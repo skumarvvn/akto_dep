@@ -1,0 +1,17 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+global:
+  environment: "stable"
+
+#####
+# Settings
+###
+podReplicasNumber: 1
+imageRepository: "docker-stable.artifactory.globalrelay.net/da-mc"
+# Uncomment the imageTag for deployment of a version other than in pom.xml
+
+#####
+# CKP
+###
+ckpHostname: "apps.ckp-stable-nvan.dev-globalrelay.net"

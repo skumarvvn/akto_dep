@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: akto-k8s
+  namespace: csoc-mon-akto
+  labels:
+    app: csoc-api-deamonset
+spec:
+  selector:
+    matchLabels:
+      app: csoc-api-deamonset
+  template:
+    metadata:
+      labels:
+        app: csoc-api-deamonset
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+      - name: mirror-api-logging
+        image: docker-hub.com/aktosecurity/mirror-api-logging:k8s_agent
+        securityContext:
+          privileged: true
+        resources:
+          limits:
+            cpu: 500m
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        env: 
+          - name: AKTO_TRAFFIC_BATCH_TIME_SECS
+            value: "10"
+          - name: AKTO_TRAFFIC_BATCH_SIZE
+            value: "100"
+          - name: AKTO_INFRA_MIRRORING_MODE
+            value: "gcp"
+          - name: AKTO_TRAFFIC_MAX_REQUEST_SIZE_CONFIG
+            value: "629145600"
+          - name: AKTO_KAFKA_BROKER_MAL
+            value: "csoc-api-da-mc-kafka-mock-runtime.csoc-mon-akto.svc.cluster.local:9092"
+          - name: AKTO_KAFKA_MAX_REQUEST_SIZE_CONFIG
+            value: "629145600"
+        #  - name: AKTO_TRAFFIC_BUFFER_MEMORY
+        #    value: "10485760"
+        #  - name: AKTO_TRAFFIC_MAX_POLL_RECORDS
+        #    value: "600"
+          - name: AKTO_MONGO_CONN
+            value: "mongodb://root:password@mongodb.csoc-mon-akto.svc.cluster.local:27017/devapiscan?authSource=admin" 

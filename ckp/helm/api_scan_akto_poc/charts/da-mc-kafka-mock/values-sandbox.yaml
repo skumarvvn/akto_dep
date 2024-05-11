@@ -1,0 +1,4 @@
+KAFKA_ADVERTISED_LISTENERS_VAR: "PLAINTEXT://10.178.163.4:9091"
+global:
+  kafkaPort: 9091
+  environment: "sandbox"

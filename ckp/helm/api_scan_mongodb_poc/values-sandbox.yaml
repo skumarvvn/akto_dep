@@ -1,0 +1,7 @@
+# Sandbox Environment values.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+global:
+  environment: "sandbox"
+ckpHostname: "apps.ckp-sandbox-nvan.dev-globalrelay.net"

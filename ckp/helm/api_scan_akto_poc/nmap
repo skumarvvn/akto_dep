@@ -1,0 +1,37 @@
+# Nmap 7.80 scan initiated Fri May 10 15:54:37 2024 as: nmap -sC -sV -o nmap -A -T5 cr2-cups-qa-nvan.dev-globalrelay.net
+Nmap scan report for cr2-cups-qa-nvan.dev-globalrelay.net (10.176.129.169)
+Host is up (0.024s latency).
+Not shown: 996 filtered ports
+PORT     STATE  SERVICE  VERSION
+22/tcp   open   ssh      OpenSSH 8.0 (protocol 2.0)
+| ssh-hostkey: 
+|   3072 cc:0d:f9:7f:6a:be:3e:cb:b3:f0:74:49:ef:da:29:45 (RSA)
+|   256 a5:f6:03:4c:c1:57:16:ac:9b:a8:65:c6:9d:91:08:52 (ECDSA)
+|_  256 57:79:af:0b:c7:76:cf:7f:2a:04:67:0f:28:78:4b:7f (ED25519)
+113/tcp  closed ident
+443/tcp  open   ssl/http nginx
+|_http-title: Cisco Call Recorder Admin
+| ssl-cert: Subject: commonName=cr2-cups-qa-nvan.dev-globalrelay.net/organizationName=Global Relay/stateOrProvinceName=BC/countryName=CA
+| Subject Alternative Name: DNS:cr2-cups-qa-nvan.dev-globalrelay.net, DNS:cr2-cups-qa-nvan, IP Address:10.176.129.169
+| Not valid before: 2024-02-08T16:44:20
+|_Not valid after:  2025-03-11T16:44:20
+8443/tcp open   ssl/http nginx
+|_http-title: Cisco Call Recorder Admin
+| ssl-cert: Subject: commonName=cr2-cups-qa-nvan.dev-globalrelay.net/organizationName=Global Relay/stateOrProvinceName=BC/countryName=CA
+| Subject Alternative Name: DNS:cr2-cups-qa-nvan.dev-globalrelay.net, DNS:cr2-cups-qa-nvan, IP Address:10.176.129.169
+| Not valid before: 2024-02-08T16:44:20
+|_Not valid after:  2025-03-11T16:44:20
+Device type: bridge|general purpose
+Running (JUST GUESSING): Oracle Virtualbox (97%), QEMU (94%)
+OS CPE: cpe:/o:oracle:virtualbox cpe:/a:qemu:qemu
+Aggressive OS guesses: Oracle Virtualbox (97%), QEMU user mode network gateway (94%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 2 hops
+
+TRACEROUTE (using port 80/tcp)
+HOP RTT     ADDRESS
+1   1.45 ms _gateway (10.0.2.2)
+2   0.30 ms 10.176.129.169
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri May 10 15:55:32 2024 -- 1 IP address (1 host up) scanned in 55.86 seconds

@@ -1,0 +1,43 @@
+			Global Relay Ownership and Restrictions on Use
+
+1.	Definitions
+1.1.	"Derivative Works" means any work, whether in Source or Object form, that is based on (or 
+derived from) the Work.
+1.2.	"Global Relay" means Global Relay Communications Inc.
+1.3.	"Intellectual Property Rights" means any and all registered and unregistered rights granted, 
+applied for, or otherwise now or hereafter in existence under or related to any patent, 
+copyright, trademark, trade secret, database protection, or other intellectual property rights 
+laws, and all similar or equivalent rights or forms of protection, in any part of the world. 
+1.4.	"Person" means an individual, corporation, unlimited liability comp[any, partnership, joint 
+venture, governmental authority, unincorporated organization, trust, association, or other 
+entity.
+1.5.	"Object" form means any form resulting from mechanical transformation or translation of a 
+Source form, including but not limited to compiled object code, generated documentation, and 
+conversions to other media types.
+1.6.	"Source" form means the preferred form for making modifications, including but not limited to 
+software source code, documentation source, and configuration files.
+1.7.	"Work" means the work of authorship, whether in Source or Object form, to which this 
+document is attached. 
+
+2.	Ownership. Global Relay is the sole and exclusive owner of the Work and all Intellectual Property 
+Rights therein. For greater certainty, no Intellectual Property Rights in the Work are transferred 
+from, or licensed by, Global Relay to any Person.
+
+3.	Restrictions on Use.  Without Global Relay's prior written consent (which this document does not 
+constitute), no Person may use, decompile, reverse engineer, disassemble, attempt to derive source 
+code, decrypt, make modifications, adapt, improve, enhance, translate, or create Derivative Works 
+from the Work.
+
+4.	Disclaimer of Warranty.  TO THE FULLEST EXTENT PERMITTED UNDER APPLICABLE LAW, WHERE 
+GLOBAL RELAY HAS CONSENTED TO THE USE OF THE WORK BY ANY PERSON, GLOBAL RELAY 
+PROVIDES THE WORK ON AN "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
+EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY WARRANTIES OR CONDITIONS 
+OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE.
+
+5.	Limitation of Liability. To the fullest extent permitted under applicable law, in no event and under 
+no legal theory, whether in tort (including negligence), contract, or otherwise, shall Global Relay be 
+liable to any Person for damages, including any direct, indirect, special, incidental, or consequential 
+damages of any character arising as a result of the use or inability to use the Work (including but not 
+limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and 
+all other commercial damages or losses), even if Global Relay has been advised of the possibility of 
+such damages.
